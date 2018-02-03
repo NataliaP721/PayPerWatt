@@ -1,5 +1,1 @@
-Arduino Methods: 
-- CT read values and do calculations
-- LCD display
-- Blutooth transmit/receive
-- Relay control
+Arduino Methods: CT read values and do calculations, LCD display, Blutooth transmit/receive, Relay control
