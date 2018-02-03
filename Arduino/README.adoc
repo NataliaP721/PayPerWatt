@@ -1,1 +1,1 @@
-Arduino Methods: CT read values and do calculations, LCD display, Blutooth transmit/receive, Relay control
+Test folder contains component tests. Example folder contains examples to help us write the code/tests.
