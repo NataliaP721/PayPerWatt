@@ -1,10 +1,9 @@
 Test folder contains component tests. Example folder contains examples to help us write the code/tests.
 
 Completed Arduino tests:
-LCD
-CT + LCD
+LCD, CT + LCD
 
 Still Required:
-Relay
-Bluetooth
-LED
+Relay, Bluetooth, LED
+
+Notes: CT code will require averaging for more consistent measurements.
