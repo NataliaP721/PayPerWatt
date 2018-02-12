@@ -1,1 +1,10 @@
 Test folder contains component tests. Example folder contains examples to help us write the code/tests.
+
+Completed Arduino tests:
+- LCD
+- CT + LCD
+
+Still Required:
+- Relay
+- Bluetooth
+- LED
