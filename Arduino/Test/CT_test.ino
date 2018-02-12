@@ -2,7 +2,7 @@
 // The maximum votage range allowed in the power circuit for the Arduino not to get damaged is 16A. 10A in the power circuit will give a Vpp of 3.11V, ranging from 0.944V to 4.05V. 
 
 // CT code adapted from the Arduino code at http://www.instructables.com/id/Simple-Arduino-Home-Energy-Meter/
-// and LCD code adapted from 
+// and LCD code adapted from https://www.arduino.cc/en/Tutorial/HelloWorld
 // include the library code:
 #include <LiquidCrystal.h>
 
