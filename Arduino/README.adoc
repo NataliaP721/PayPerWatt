@@ -1,4 +1,4 @@
-Test folder contains component tests. Example folder contains examples to help us write the code/tests.
+Test folder contains component tests. Example folder contains examples to help us write the project code.
 
 Completed Arduino tests:
 LCD, CT + LCD
