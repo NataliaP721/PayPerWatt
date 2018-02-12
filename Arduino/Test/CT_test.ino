@@ -40,7 +40,7 @@ void loop() {
   
   // The Arduino ADC reads the analog voltage as a number from 0 to 1024. 
   //2.5137 was used as the mid-point because when nothing is plugged in, 0.137V was the measured value. 
-  //R = 220, but 250 gave better experimental results.
+  //R = 220, but 250 gave better experimental results if used in the code instead?
   double RMSCurrent = ((Vpp*4.9/1000)-2.5137)/250/2*0.707*2000; 
   // if the current is below 0, set the measurement to 0. 
   if(RMSCurrent<0){
