@@ -31,9 +31,9 @@ void loop() {
   int analogV = 0;
   int Vpp = 0;
 
-  for(int i = 0; i<=300; i++)                         // Monitors and logs the current input for 300 cycles to determine current
+  for(int i = 0; i<=300; i++)                         // Monitors and logs the voltage input for 300 cycles to determine Vpp
   {
-    analogV = analogRead(ctPin);                 // Reads current input and records maximum current
+    analogV = analogRead(ctPin);                 // Reads voltage input and records maximum voltage (Vpp)
     if(analogV >= Vpp)
       Vpp = analogV;
   }
