@@ -1,6 +1,5 @@
-// This code is untested. I think the relay is Active Low (unsure of this). 
-// If this is the case, when HIGH is written, the relay will be open
-// and when LOW is written, the relay will be closed.
+// The relay will close when control signal is HIGH if wires connected to 
+// NO and COM of relay. The relay is open when signal is LOW.
 
 int in1 = 7;
 void setup() {
