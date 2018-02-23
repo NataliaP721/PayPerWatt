@@ -1,3 +1,3 @@
-Completed: None
+Completed: Bluetooth
 
-Still required: Bluetooth, UI, Stripe library
+Still required: UI, Stripe library
