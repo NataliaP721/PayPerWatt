@@ -60,7 +60,7 @@ void sendReadings(double current, double power, double cost){
   //if (Serial.available()){ //this is only required if I want to send data from the serial monitor
    // delay(2); 
     mySerial.println(formatData(current,power,cost));
-    delay(100);
+    delay(500);
  // }
 }
 /**
