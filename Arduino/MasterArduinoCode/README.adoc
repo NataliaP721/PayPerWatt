@@ -6,3 +6,4 @@ Still need to:
   - Calibrate CT
   - Add averaging for CT
   - Add price instead of A for LCD?
+  - Document code
