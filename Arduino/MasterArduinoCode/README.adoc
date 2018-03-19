@@ -1,1 +1,8 @@
 
+Still need to:
+  - Change kWh to Wh?
+  - Once exceed max price, stop charging
+  - Test code
+  - Calibrate CT
+  - Add averaging for CT
+  - Add price instead of A for LCD?
