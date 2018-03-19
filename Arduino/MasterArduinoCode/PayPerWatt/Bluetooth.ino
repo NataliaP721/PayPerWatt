@@ -1,8 +1,8 @@
 /**
  * In final code I can use Serial instead of SoftwareSerial if we run out of pins
  * Also, address all TODO statements
- * Add -> Receive MaxAuthorized price from app and put into variable maxAuthorizedPrice -----------------------------------------------------------------------------------------------------
  * Change kWh to Wh because it is small -----------------------------------------------------------------------------------------------------------------------------------------------------
+ * Does it stop charging when max_authorized_cost is reached?-----------------------------------------------------------------------------------------------
  */
 //#include <SoftwareSerial.h>
 #include "CurrentTransformer.h"
@@ -101,7 +101,7 @@ void sendDataToApp(double costPerWatt){
         int time_minutes = mils/1000/60; //TODO call the charging time function here
         int time_seconds = mils/1000; //TODO call the charging time function here
         double rate_of_power_consumed = getWh(); //TODO call the power consumed function here - in Wh
-        double cost = costPerWatt*rate_of_power_consumed; //TODO call the cost function here to get the correct cost value
+        double cost = costPerWattHour*rate_of_power_consumed; //TODO call the cost function here to get the correct cost value
 
         to_send = formatData(cost,power_consumed,time_hours,time_minutes,
                       time_seconds,rate_of_power_consumed);  

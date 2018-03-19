@@ -1,8 +1,7 @@
 #ifndef PAYPERWATT_H
 #define PAYPERWATT_H
 
-extern double costPerWatt;
-extern double maxAuthorizedPrice;
+extern double costPerWattHour;
 
 //Pins
 extern int ctPin;                                   // Assign CT input to Analog pin 1
