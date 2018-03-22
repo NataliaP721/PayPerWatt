@@ -1,9 +1,10 @@
 #ifndef CURRENTTRANSFORMER_H
 #define CURRENTTRANSFORMER_H
 
-extern int getMil();
-extern double getWh();
-extern double getW();
+#include <elapsedMillis.h>
+extern elapsedMillis timeElapsed; 
+extern double Wh;
+extern double RMSPower;
 
 #endif
 

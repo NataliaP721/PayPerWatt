@@ -1,10 +1,8 @@
 /**
  * In final code I can use Serial instead of SoftwareSerial if we run out of pins
  * Also, address all TODO statements
- * Change kWh to Wh because it is small -----------------------------------------------------------------------------------------------------------------------------------------------------
- * Does it stop charging when max_authorized_cost is reached?-----------------------------------------------------------------------------------------------
+ * Does it stop charging when max_authorized_cost is reached?-----------------------------------------------------------------------------------------------TEST THIS
  */
-//#include <SoftwareSerial.h>
 #include "CurrentTransformer.h"
 #include "PayPerWatt.h"
 
@@ -21,34 +19,10 @@ boolean paymentStatus = false;
  */
 boolean send_final_cost = false;
 /**
- * True when max_authorized cost has been recieved and false otherwise
- */
-boolean start_charging = false;
-/**
  * Stores the data read from the app
  */
 String inputFromApp = "";
 
-//int count = 0;//for testing only
-
-//void setup() {
-  // Open serial communications for printing to the serial monitor
-  //Serial.begin(9600); //for testing only
-  //Serial.println("Type AT commands!"); //for configuring bluetooth module
-  
-  // The HC-06 defaults to 9600 according to the datasheet.
-///}
-///* The app does not read and write data simultaneously because there is only one RFCOMM channel/socket
-// * It is not possible to have multiple communication channels with the same Bluetooth Module
-// * If the read starts first, write will be blocked until the read finishes, and vice versa
-// * The reliability of data transfer is compromised (i.e: the message recieved is not the same as the message sent)
-// * So make sure to only do one thing at a time, either read or write
-// */
-//void loop() {
-//  recieveDataFromApp(); // this is a write operation for the app
-//  sendDataToApp();  
-//  count++;
-//}
 /**
  * Reads info send by the app. Checks if the string recieved says "payment_confirmed\n"
  * (Note: the newline is important)
@@ -70,44 +44,50 @@ boolean recieveDataFromApp(){
       send_final_cost = true;
       //TODO call method to turn off the realy here
       relayOpen();
-      start_charging = false;
-      sendDataToApp(start_charging);
+      charging = false;
+      sendDataToApp(charging);
     }
     else if(inputFromApp.charAt(0) == '$'){ //means max authorized price is being sent
       max_authorized_cost = inputFromApp.substring(1).toDouble();
       //TODO call method to turn on the relay here
       relayClose();
-      start_charging = true;
+      charging = true;
+      Serial.println("here");
     }
- 
-    //Serial.println(inputFromApp);//for testing
-    //Serial.println((String)paymentStatus);//for testing
-    //Serial.println((String)send_final_cost);//for testing
-    //Serial.println((String)max_authorized_cost+ "\n");//for testing
-
     inputFromApp = "";
   } 
-  return start_charging;
+  return charging;
 }
 /**
  * Sends the values to the app - also sends the final cost to the app when requested
  */
 void sendDataToApp(double costPerWatt){
     String to_send = "";
-    if(!send_final_cost && start_charging){
-        double power_consumed = getW(); //TODO call the power_consumed function here - in Watts
-        int mils = getMil();
-        int time_hours = mils/1000/60/60; //TODO call the charging time function here 
-        int time_minutes = mils/1000/60; //TODO call the charging time function here
-        int time_seconds = mils/1000; //TODO call the charging time function here
-        double rate_of_power_consumed = getWh(); //TODO call the power consumed function here - in Wh
-        double cost = costPerWattHour*rate_of_power_consumed; //TODO call the cost function here to get the correct cost value
+    if(!send_final_cost && charging){
+        double power_consumed = RMSPower; // Instantaneous Power
+        // Split millis into HH:MM:SS or 0 if not charging
+        unsigned long time_hours, time_minutes, time_seconds;
+        if(charging == true){
+          unsigned long mils = timeElapsed;
+          time_hours = mils/1000/60/60; 
+          time_minutes = mils/1000/60-time_hours*60;
+          time_seconds = mils/1000-time_minutes*60; 
+        }
+        else {
+           time_hours = 0; 
+           time_minutes = 0;
+           time_seconds = 0; 
+        }
+        double rate_of_power_consumed = Wh; //TODO call the power consumed function here - in Wh
+        double cost = costPerWattHour*rate_of_power_consumed; //TODO call the cost function here to get the correct cost value -----------------------------------
 
         to_send = formatData(cost,power_consumed,time_hours,time_minutes,
                       time_seconds,rate_of_power_consumed);  
     }
     else if(send_final_cost){
-        double cost = 50; //TODO call the cost function here to get the correct cost value
+        double rate_of_power_consumed = Wh; //TODO call the power consumed function here - in Wh
+        double cost = costPerWattHour*rate_of_power_consumed;
+        //double cost = 50; //TODO call the cost function here to get the correct cost value ------------------------------------------------------------
        
         if(cost > max_authorized_cost)
             to_send = "*" + (String)max_authorized_cost +"\t";
@@ -116,21 +96,32 @@ void sendDataToApp(double costPerWatt){
 
         send_final_cost = false;
     }
-    //if (Serial.available()){ //this is only required if I want to send data from the serial monitor
-    //  delay(2); 
     mySerial.print(to_send);
     delay(500);
 }
 /**
  * Formats the data into the format that will be displayed on the app
  */
-String formatData(double cost, double power_consumed, int time_hours,
-                    int time_minutes, int time_seconds, 
+String formatData(double cost, double power_consumed, unsigned long time_hours,
+                    unsigned long time_minutes, unsigned long time_seconds, 
                     double rate_of_power_consumed){
+                      
+  String hours = (String)time_hours;
+  String minutes = (String)time_minutes;
+  String seconds = (String)time_seconds;
+
+  // Add zero in front for padding
+  if(hours.length() < 2)
+    hours = "0"+hours;
+  if(minutes.length() < 2)
+    minutes = "0"+minutes;
+  if(seconds.length() < 2)
+    seconds = "0"+seconds;
+
   String temp = "Cost\n " + (String)cost + " $CAD\n";
   temp += "\nTotal Power Consumed\n " + (String)power_consumed + " W\n";
-  temp += "\nTotal Charging Time\n " + (String)time_hours +":" + (String)time_minutes +
-            ":" + (String)time_seconds + " (HH:MM:SS)\n";
+  temp += "\nTotal Charging Time\n " + hours +":" + minutes +
+            ":" + seconds + " (HH:MM:SS)\n";
   temp += "\nRate of Power Consumption\n" + (String)rate_of_power_consumed + " Wh\t";
   return temp;
 }
