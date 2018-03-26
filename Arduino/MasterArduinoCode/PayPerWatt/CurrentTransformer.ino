@@ -42,25 +42,27 @@ void CurrentTransformer(){
     
     RMSPower = 110*RMSCurrent;  // Calculates RMS Power Assuming Voltage 110VAC. This is approximately the RMS voltage on the AC power circuit. 
     if(charging == true) {
-       Wh = Wh + (RMSPower * ((timeElapsed-previousTime)/60/60));    // Calculate Wh used
+       Wh = RMSPower * ((timeElapsed-previousTime)/60/60);    // Calculate Wh used
+       cost = cost+Wh*costPerWattHour;
     }
     previousTime = timeElapsed;
 
     // Remove current and add cost -----------------------------------------------------------------------------------------------------------------------------
-    delay(5000);
+    delay(50);
     lcd.clear();
     lcd.print("PayPerWatt");
-    delay(5000);
+    delay(1000);
     lcd.clear();
     lcd.setCursor(11,0);   
     lcd.print(RMSCurrent);
     lcd.print("A");
-    lcd.setCursor(0,1);
-    lcd.print(RMSPower); 
-    lcd.print("W"); 
-    lcd.setCursor(9,1);
-    lcd.print(Wh); 
-    lcd.print("Wh");
+//    lcd.setCursor(0,1);
+//    lcd.print(RMSPower); 
+//    lcd.print("W"); 
+//    lcd.setCursor(9,1);
+//    lcd.print(Wh); 
+//    lcd.print("Wh");
+    delay(50);
   }
   else{
     lcd.clear();

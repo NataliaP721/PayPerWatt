@@ -6,6 +6,7 @@
 
 boolean charging = false; // Start with charging is false
 double costPerWattHour = 0.000055; // $0.055/kWh - From ENMAX in calgary the price was 5.2 in February
+double cost = 0;
 
 // Initialize LCD
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;

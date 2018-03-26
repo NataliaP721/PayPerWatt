@@ -79,7 +79,7 @@ void sendDataToApp(double costPerWatt){
            time_seconds = 0; 
         }
         double rate_of_power_consumed = Wh; //TODO call the power consumed function here - in Wh
-        double cost = costPerWattHour*rate_of_power_consumed; //TODO call the cost function here to get the correct cost value -----------------------------------
+//        double cost = costPerWattHour*rate_of_power_consumed; //TODO call the cost function here to get the correct cost value -----------------------------------
 
         to_send = formatData(cost,power_consumed,time_hours,time_minutes,
                       time_seconds,rate_of_power_consumed);  
