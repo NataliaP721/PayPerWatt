@@ -1,5 +1,8 @@
 
 Still need to:
-  - WH
-  - Cost
+  - Once exceed max price, stop charging
   - Test code
+  - Calibrate CT
+  - Add averaging for CT
+  - Add price instead of A for LCD?
+  - Did this upload??

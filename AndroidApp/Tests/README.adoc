@@ -1,0 +1,3 @@
+Completed: Bluetooth, GET/POST requests to server
+
+Still required: UI, Stripe library
