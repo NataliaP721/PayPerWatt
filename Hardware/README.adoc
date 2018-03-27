@@ -1,5 +1,0 @@
-PCB schematic
-Use a Online Gerber File Viewer to see exactly what the PCB looks like. This will hopefully help with debugging
-
-Circuit Schematic
-Search up PayPerWatt on Circuit maker to access it. NOTE do not try to open the PCB file as it will cause Circuit maker to hang  forever. 

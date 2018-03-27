@@ -1,1 +1,0 @@
-The only important file for the app is in app folder. The file is views.py
