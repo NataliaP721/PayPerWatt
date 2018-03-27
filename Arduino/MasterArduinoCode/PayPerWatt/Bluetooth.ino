@@ -9,7 +9,7 @@
 /**
  * The value for max_authorized_cost will be send by the app 
  */
-double max_authorized_cost = 0.00; 
+double max_authorized_cost = 0; 
 /**
  * Stores the payment status sent from the app - either true or false
  */
@@ -43,8 +43,8 @@ boolean recieveDataFromApp(){
     else if(inputFromApp == "stop_charging"){
       send_final_cost = true;
       //TODO call method to turn off the realy here
-      relayOpen();
-      charging = false;
+//      relayOpen();
+//      charging = false;
       sendDataToApp(charging);
     }
     else if(inputFromApp.charAt(0) == '$'){ //means max authorized price is being sent
@@ -52,7 +52,6 @@ boolean recieveDataFromApp(){
       //TODO call method to turn on the relay here
       relayClose();
       charging = true;
-      Serial.println("here");
     }
     inputFromApp = "";
   } 
@@ -86,11 +85,14 @@ void sendDataToApp(double costPerWatt){
     }
     else if(send_final_cost){
         double rate_of_power_consumed = Wh; //TODO call the power consumed function here - in Wh
-        double cost = costPerWattHour*rate_of_power_consumed;
+       // double cost = costPerWattHour*rate_of_power_consumed;
         //double cost = 50; //TODO call the cost function here to get the correct cost value ------------------------------------------------------------
        
-        if(cost > max_authorized_cost)
+        if(cost > max_authorized_cost){
+//            charging = false;
+//            relayOpen();
             to_send = "*" + (String)max_authorized_cost +"\t";
+        }
         else        
             to_send = "*" + (String)cost +"\t";
 

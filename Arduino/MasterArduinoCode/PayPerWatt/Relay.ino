@@ -14,4 +14,5 @@ void relayClose() {
 void relayOpen() {
   digitalWrite(relayPin, OPEN);
   Wh = 0;   // When user finishes charging, reset Wh
+  cost = 0;   // WHen user finishes charging, reset cost
 }

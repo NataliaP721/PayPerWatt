@@ -4,6 +4,7 @@
 // Set the cost per Wh in PayPerWatt.ino based on average Calgary value. 
 extern double costPerWattHour;
 extern double cost;
+extern double max_authorized_cost;
 
 // True if charging, false otherwise. Is set in Bluetooth code based on app input.
 extern boolean charging;
