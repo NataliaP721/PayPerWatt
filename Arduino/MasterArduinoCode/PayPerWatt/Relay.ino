@@ -7,6 +7,8 @@
 // Closes relay to start charging
 void relayClose() {
   timeElapsed = 0;   // Start timer when device starts charging
+  Wh = 0;
+  cost = 0; // When user finishes charging, reset cost
   digitalWrite(relayPin, CLOSE);
 }
 
@@ -14,5 +16,4 @@ void relayClose() {
 void relayOpen() {
   digitalWrite(relayPin, OPEN);
   Wh = 0;   // When user finishes charging, reset Wh
-  cost = 0;   // WHen user finishes charging, reset cost
 }

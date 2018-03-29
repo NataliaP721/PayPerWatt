@@ -5,7 +5,7 @@
 #include "CurrentTransformer.h"
 
 boolean charging = false; // Start with charging is false
-double costPerWattHour = 0.5; //0.000055; // $0.055/kWh - From ENMAX in calgary the price was 5.2 in February
+double costPerWattHour = 0.05; //0.5; // $0.055/kWh - From ENMAX in calgary the price was 5.2 in February
 double cost = 0;
 
 // Initialize LCD

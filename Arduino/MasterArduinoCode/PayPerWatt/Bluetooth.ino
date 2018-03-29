@@ -43,8 +43,8 @@ boolean recieveDataFromApp(){
     else if(inputFromApp == "stop_charging"){
       send_final_cost = true;
       //TODO call method to turn off the realy here
-//      relayOpen();
-//      charging = false;
+      relayOpen();
+      charging = false;
       sendDataToApp(charging);
     }
     else if(inputFromApp.charAt(0) == '$'){ //means max authorized price is being sent
@@ -78,23 +78,19 @@ void sendDataToApp(double costPerWatt){
            time_seconds = 0; 
         }
         double rate_of_power_consumed = Wh; //TODO call the power consumed function here - in Wh
-//        double cost = costPerWattHour*rate_of_power_consumed; //TODO call the cost function here to get the correct cost value -----------------------------------
 
         to_send = formatData(cost,power_consumed,time_hours,time_minutes,
                       time_seconds,rate_of_power_consumed);  
     }
     else if(send_final_cost){
         double rate_of_power_consumed = Wh; //TODO call the power consumed function here - in Wh
-       // double cost = costPerWattHour*rate_of_power_consumed;
-        //double cost = 50; //TODO call the cost function here to get the correct cost value ------------------------------------------------------------
        
         if(cost > max_authorized_cost){
-//            charging = false;
-//            relayOpen();
-            to_send = "*" + (String)max_authorized_cost +"\t";
+            to_send = "*" + String(max_authorized_cost, 2) +"\t";
         }
-        else        
-            to_send = "*" + (String)cost +"\t";
+        else{
+            to_send = "*" + String(cost,2) +"\t";
+        }
 
         send_final_cost = false;
     }

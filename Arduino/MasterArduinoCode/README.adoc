@@ -1,5 +1,3 @@
 
 Still need to:
-  - Wh
-  - Cost
   - Test code
