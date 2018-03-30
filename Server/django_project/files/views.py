@@ -7,7 +7,7 @@ from django.conf import settings
 from django.http import HttpResponse
 
 def download(request):
-    path = 'app-debug.apk'
+    path = 'PayPerWatt.apk'
     file_path = os.path.join(settings.MEDIA_ROOT, path)
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:

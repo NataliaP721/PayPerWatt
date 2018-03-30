@@ -17,7 +17,6 @@ def post(request):
         s = input.split("\t")
         if s[0]=="passwordSave":
             change.password = s[1]
-            change.chargeAmount = 0
             change.save()
             return HttpResponse(PayPerWatt.objects.get(id=1).password)
 
@@ -44,7 +43,6 @@ def post(request):
             change.chargeAmount = s[1]
             change.isInUse = "false"
             change.token = ""
-            change.authorizedAmount = 0
             change.save()
             return HttpResponse("true")
         else:
