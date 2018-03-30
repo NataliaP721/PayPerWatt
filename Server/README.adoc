@@ -1,3 +1,7 @@
 The important files are:
+
 - views.py in the app folder. This file contains information on how the server will respond to different POST requests.
+
 - models.py in the polls folder. This file contains information on the PayPerWatt object used in the database.
+
+- views.py in the files folder. This file contains the filepath to the app apk file so users can download the app. 
