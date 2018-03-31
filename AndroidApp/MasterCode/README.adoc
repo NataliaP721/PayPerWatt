@@ -1,7 +1,10 @@
 The important files are:
 
-- URLConnect in filepath 
+- URLConnect.java in filepath 
 PayPerWatt/AndroidApp/MasterCode/PaymentInterface/priceselection/src/main/java/com/stripe/priceselection/activity/URLConnect.java
 
-- All files in filepath
+- All .java files in filepath
 PayPerWatt/AndroidApp/MasterCode/PaymentInterface/priceselection/src/main/java/com/stripe/priceselection/bluetooth_and_login/
+
+- All .xml layout files in filepath
+PayPerWatt/AndroidApp/MasterCode/PaymentInterface/priceselection/src/main/res/layout/
