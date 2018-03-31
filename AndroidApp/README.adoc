@@ -1,0 +1,3 @@
+The important files are:
+
+- URLConnection in filepath /PayPerWatt/AndroidApp/Tests/URLConnectionTest/app/src/main/java/com/example/android/urlconnectiontest/URLConnect.java
