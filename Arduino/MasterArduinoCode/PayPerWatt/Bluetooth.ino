@@ -1,10 +1,12 @@
-/**
- * In final code I can use Serial instead of SoftwareSerial if we run out of pins
- * Also, address all TODO statements
- * Does it stop charging when max_authorized_cost is reached?-----------------------------------------------------------------------------------------------TEST THIS
- */
 #include "CurrentTransformer.h"
 #include "PayPerWatt.h"
+
+/* The app does not read and write data simultaneously because there is only one RFCOMM channel/socket
+ * It is not possible to have multiple communication channels with the same Bluetooth Module
+ * If the read starts first, write will be blocked until the read finishes, and vice versa
+ * The reliability of data transfer is compromised (i.e: the message recieved is not the same as the message sent)
+ * So make sure to only do one thing at a time, either read or write
+ */
 
 /**
  * The value for max_authorized_cost will be send by the app 
@@ -57,6 +59,7 @@ boolean recieveDataFromApp(){
   } 
   return charging;
 }
+
 /**
  * Sends the values to the app - also sends the final cost to the app when requested
  */
@@ -97,18 +100,20 @@ void sendDataToApp(double costPerWatt){
     mySerial.print(to_send);
     delay(500);
 }
+
 /**
  * Formats the data into the format that will be displayed on the app
  */
 String formatData(double cost, double power_consumed, unsigned long time_hours,
                     unsigned long time_minutes, unsigned long time_seconds, 
                     double rate_of_power_consumed){
-                      
+
+  // Converts the doubles to Strings
   String hours = (String)time_hours;
   String minutes = (String)time_minutes;
   String seconds = (String)time_seconds;
 
-  // Add zero in front for padding
+  // Add zero in front for padding if the time has less than 2 digits
   if(hours.length() < 2)
     hours = "0"+hours;
   if(minutes.length() < 2)

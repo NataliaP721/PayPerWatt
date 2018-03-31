@@ -1,23 +1,45 @@
-// Since the current going through the relay in the power circuit cannot exceed 10A, a higher burden resistor was used to allow for more accurate measurements on smaller voltage measurements.
-// The maximum votage range allowed in the power circuit for the Arduino not to get damaged is 16A. 10A in the power circuit will give a Vpp of 3.11V, ranging from 0.944V to 4.05V. 
-
-// CT code adapted from the Arduino code at http://www.instructables.com/id/Simple-Arduino-Home-Energy-Meter/
-// and LCD code adapted from https://www.arduino.cc/en/Tutorial/HelloWorld
+/**
+ * Since the current going through the relay in the power circuit cannot exceed 10A, a higher burden resistor was used to allow for more accurate measurements on smaller current measurements. 
+ * The maximum votage range allowed in the power circuit for the Arduino not to get damaged is 16A. 10A in the power circuit will give a Vpp of 3.11V, ranging from 0.944V to 4.05V. 
+ */
 
 // include the library code:
 #include "PayPerWatt.h"
 
+/**
+ * Measures the elapsed time. 
+ */
 elapsedMillis timeElapsed; //declare global if you don't want it reset every time loop runs
+
+/**
+ * Stores the previous time, so the time interval can be used in the Wh calculation.
+ */
 unsigned long previousTime = 0;
 
-// initialize the library by associating any needed LCD interface pin
-// with the arduino pin number it is connected to
-
+/**
+ * The Wh being used to charge device. 
+ */
 double Wh = 0;
+
+/**
+ * The RMS power being used to charge device.  
+ */
 double RMSPower = 0;
+
+/**
+ * The RMS current flowing through the power circuit. 
+ */
 double RMSCurrent = 0;
+
+/**
+ * temp is the temporary current measurement, 
+ * sumRMSCurrent is the sum of RMSCurrent measurements used to calculate average. 
+ */
 double temp = 0, sumRMSCurrent = 0;
 
+/**
+ * Measures the current in the power circuit using a current transformer. Outputs the results to the LCD monitor. 
+ */
 void CurrentTransformer(){
   if(charging == true)
   {
@@ -26,6 +48,7 @@ void CurrentTransformer(){
     int analogV = 0;
     int Vpp = 0;
 
+    // Code to average 20 current measurements for higher accuracy and less fluctauations. 
     for(int j = 0; j<20; j++) {
       for(int i = 0; i<=512; i++)                         // Monitors and logs the current input for 300 cycles to determine current
       {
