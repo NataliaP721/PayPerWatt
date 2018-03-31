@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.stripe.priceselection.StoreActivity"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:titleTextColor="@color/white"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="2dp"
+            android:text="If your actual cost is less than the maximum selected amount, you will be charged that price instead."
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_store_items"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_weight="1"
+            android:nestedScrollingEnabled="false" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_checkout"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginBottom="100dp"
+            android:layout_marginStart="125dp"
+            android:layout_marginLeft="125dp"
+            android:src="@drawable/ic_charge"
+            android:tint="@android:color/white"
+            app:rippleColor="@color/colorPrimary"
+            app:elevation="12dp"
+            android:scaleType="center"
+            app:useCompatPadding="true"
+            app:pressedTranslationZ="12dp"
+            />
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

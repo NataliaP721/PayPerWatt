@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.stripe.priceselection"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- <application -->
+    <!-- android:icon="@drawable/ic_launcher" -->
+    <!-- android:label="@string/appName"> -->
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".StoreActivity"
+            android:finishOnTaskLaunch="true"
+            android:label="Select Maximum Payment"
+            android:parentActivityName=".bluetooth_and_login.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="com.stripe.priceselection.intent.action.Launch" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN"/> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+            <!-- </intent-filter> -->
+
+        </activity>
+
+        <!-- Enables the Google Payment API -->
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
+
+
+
+        <service
+            android:name=".service.TokenIntentService"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.LauncherActivity"
+            android:finishOnTaskLaunch="true"
+            android:label="Begin Payment"
+            android:parentActivityName=".bluetooth_and_login.MainActivity"
+            android:theme="@style/SampleTheme">
+
+        <!--android:launchMode="singleTask"-->
+        <!--<intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".activity.PaymentMultilineActivity"
+            android:finishOnTaskLaunch="true"
+            android:label="Select a Payment Method"
+            android:parentActivityName=".bluetooth_and_login.MainActivity"
+            android:theme="@style/SampleTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+
+    <!-- <activity -->
+        <!-- android:name=".PaymentActivity" -->
+        <!-- android:launchMode="singleTask"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.VIEW"/> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+
+        <activity
+            android:name=".bluetooth_and_login.ConnectBluetooth"
+            android:finishOnTaskLaunch="true"
+            android:label="Connect to Bluetooth"
+            android:parentActivityName=".bluetooth_and_login.MainActivity"
+            android:theme="@style/SampleTheme">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".bluetooth_and_login.MainActivity" />
+        </activity>
+        <activity
+            android:name=".bluetooth_and_login.MonitorPowerConsumption"
+            android:finishOnTaskLaunch="true"
+            android:label="Monitor Power Consumption"
+            android:parentActivityName=".bluetooth_and_login.MainActivity"
+            android:theme="@style/SampleTheme">
+
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".bluetooth_and_login.MainActivity" />
+        </activity>
+        <activity
+            android:name=".bluetooth_and_login.EnterPasswordActivity"
+            android:finishOnTaskLaunch="true"
+            android:label="Login"
+            android:parentActivityName=".bluetooth_and_login.MainActivity"
+            android:theme="@style/SampleTheme">
+
+        </activity>
+        <activity
+            android:name=".bluetooth_and_login.CreatePasswordActivity"
+            android:finishOnTaskLaunch="true"
+            android:label="Create New User"
+            android:parentActivityName=".bluetooth_and_login.MainActivity"
+            android:theme="@style/SampleTheme">
+
+        </activity>
+        <activity
+            android:name=".bluetooth_and_login.MainActivity"
+            android:theme="@style/SampleTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,68 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/egyptianblue</item>
+        <item name="colorPrimaryDark">@color/egyptianblue</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:buttonStyle">@style/CustomButton</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/egyptianblue</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:buttonStyle">@style/CustomButton</item>
+    </style>
+
+    <style name="WhiteTextTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorPrimary">#fff</item>
+    </style>
+
+    <style name="CustomButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:minHeight">64dip</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:paddingLeft">24dp</item>
+    </style>
+
+    <style name="EmojiStyle" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="Header.Light" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/secondary_text_light</item>
+    </style>
+
+    <style name="Button" parent="@android:style/Widget.Button">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textColor">@color/buttonText</item>
+        <item name="android:background">@color/egyptianblue</item>
+    </style>
+
+    <style name="Save" parent="@style/Button">
+        <item name="android:layout_marginTop">4dp</item>
+    </style>
+
+    <style name="Header" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/header_dark</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingLeft">3dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/headerText</item>
+    </style>
+
+</resources>
