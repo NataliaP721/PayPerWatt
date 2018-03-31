@@ -150,6 +150,7 @@ public class PaymentMultilineActivity extends InheritBluetoothFunctionality {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
+        // Sends token to server using POST request and displays Toast with response. 
         URLConnect obj = new URLConnect();
         CharSequence getResponse =  obj.GET();
         CharSequence postResponse =  obj.POST("token\t"+source.getId());
