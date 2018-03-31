@@ -1,17 +1,27 @@
 
-package com.stripe.priceselection;
+package com.stripe.priceselection.activity;
 
-import java.net.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
-import java.lang.*;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
- * Created by natalia on 01/03/18.
+ * This class allows the app to send GET and POST requests to the server, and to receive responses back.
+ * @author Natalia Pavlovic
+ * @version 3.0
+ * @since March 20, 2018
  */
-
 public class URLConnect{
 
+    /**
+     * Creates a HTTPURLconnection in order to send GET requests from the app to the server. Uses an inputStreamReader to read the
+     * data sent back to the app from the server.
+     */
     public String GET() {
         // GET request
         URL url;
@@ -56,6 +66,11 @@ public class URLConnect{
             return s;
         }
     }
+
+    /**
+     * Creates a HTTPURLconnection in order to send POST requests from the app to the server. Uses an inputStreamReader to read the
+     * data sent back to the app from the server. Data in the POST requests is sent to the server as a String.
+     */
     public String POST(String data) {
         String responseString = null;
         try {
