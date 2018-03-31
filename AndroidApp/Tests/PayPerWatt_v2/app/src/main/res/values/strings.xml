@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PayPerWatt</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="button_connectBT">Monitor Power Consumption</string>
+    <string name="message_BTStatus">Please choose a device from the list below</string>
+    <string name="current_power_cost">Cost\n0.00 $CAD\n\nTotal Power Consumed\n0.00 W\n
+        \nTotal Charging Time\n00:00:00 (HH:MM:SS)\n\nRate of Power Consumption\n0.00 kWh</string>
+    <string name="startCharging">Start Charging</string>
+    <string name="stopCharging">Stop Charging</string>
+
+</resources>
