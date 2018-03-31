@@ -1,7 +1,10 @@
 package com.stripe.priceselection.bluetooth_and_login;
 
 /**
- * Created by Munifa on 2018-02-22
+ * This class defines flags which help control the flow of the app
+ * @author Munifa Saeed
+ * @version 2.0
+ * @since February 22, 2018 
  */
 
 public class controlFlags {
