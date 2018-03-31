@@ -14,11 +14,12 @@ import android.util.Log;
 import android.widget.Toast;
 
 /**
- * Created by Munifa on 2018-03-11
- * Abstract bluetooth class from which you must inherit if your activity wants to communicate with the
+ * Abstract bluetooth class from which all activities must inherit if they want to communicate with the
  * Arduino (i.e: if you want to send info to the Arduino or recieve info from the Arduino)
+ * @author Munifa Saeed
+ * @version 1.0
+ * @since March 11, 2018
  */
-
 public abstract class InheritBluetoothFunctionality extends AppCompatActivity {
     protected static BluetoothDevice mDevice;
     protected static BluetoothService mService;
@@ -40,7 +41,6 @@ public abstract class InheritBluetoothFunctionality extends AppCompatActivity {
     }
 
     /**
-     * TODO Must call this in your onDestroy method
      * Only call this method once in the onDestroy method for the activity
      * that starts right after the connect bluetooth activity
      */
