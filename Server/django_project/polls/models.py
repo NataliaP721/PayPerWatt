@@ -8,4 +8,4 @@ class PayPerWatt(models.Model):
 	password = models.CharField(max_length=200)
 	token = models.CharField(max_length=200)
 	authorizedAmount = models.IntegerField(default = 0)
-	chargedAmount = models.IntegerField(default = 0)
+	chargedAmount = models.FloatField(default = 0)

@@ -7,8 +7,8 @@ from polls.models import PayPerWatt
 from django.http import HttpResponse
 
 def get(request):
-        global password
-        return HttpResponse(password)
+        authorizedAmount = PayPerWatt.objects.get(id=1).authorizedAmount
+        return HttpResponse(authorizedAmount)
 
 @csrf_exempt
 def post(request):
