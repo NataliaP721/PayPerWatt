@@ -13,8 +13,17 @@ import android.widget.Toast;
 
 import com.stripe.priceselection.R;
 
+/**
+ * Main app activity
+ * @author Munifa Saeed
+ * @version 3.0
+ * @since February 22, 2018
+ */
 public class MainActivity extends AppCompatActivity {
-
+    /**
+     * On create control flags are reset
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //if the PayPerWatt Icon is pressed then a request is sent to the server to check
-    //if there is an existing user already charging
+    /**
+     * When the PayPerWatt Icon is pressed then a request is sent to the server to check
+     * if there is an existing user already charging
+     * @param view
+     */
     public void startCharging(View view){
         URLConnect obj = new URLConnect();
         obj.GET();
