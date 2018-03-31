@@ -1,6 +1,7 @@
 The important files are:
 
-- URLConnection in filepath /PayPerWatt/AndroidApp/Tests/URLConnectionTest/app/src/main/java/com/example/android/urlconnectiontest/URLConnect.java
+- URLConnection in filepath 
+PayPerWatt/AndroidApp/MasterCode/PaymentInterface/priceselection/src/main/java/com/stripe/priceselection/activity/URLConnect.java
 
 - All files in filepath
 PayPerWatt/AndroidApp/MasterCode/PaymentInterface/priceselection/src/main/java/com/stripe/priceselection/bluetooth_and_login/
