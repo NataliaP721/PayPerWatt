@@ -1,10 +1,13 @@
 package com.stripe.priceselection.bluetooth_and_login;
 
-/*
- * Created by Munifa on 2018-02-20
+/**
+ * This activity displays all available bluetooth connections and allows the user to
+ * connect to the selected bluetooth device.
+ * @author Munifa Saeed
+ * @version 2.0
+ * @since February 20, 2018
  * References: https://developer.android.com/guide/topics/connectivity/bluetooth.html
  */
-
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -39,13 +42,34 @@ import static com.stripe.priceselection.bluetooth_and_login.Constants.MY_PERMISS
 import static com.stripe.priceselection.bluetooth_and_login.Constants.REQUEST_ENABLE_BT;
 
 public class ConnectBluetooth extends AppCompatActivity {
+    /**
+     * Scan again button on the activity
+     */
     Button toolBarBtn;
+    /**
+     * List view showing the list of available bluetooth devices
+     */
     private ListView listView1;
     public ArrayAdapter<String> listView1_adapter;
+    /**
+     * Control flag for monitoring the state of the bluetooth reciever
+     */
     private boolean recieverRegistered = false;
+    /**
+     * List of available bluetooth devices
+     */
     private ArrayList<BluetoothDevice> mBT_DeviceList = new ArrayList<>();
+    /**
+     * List storing the name and status of the bluetooth devices
+     */
     private ArrayList<String> mDeviceList = new ArrayList<>();
+    /**
+     * The device's bluetooth adapter
+     */
     BluetoothAdapter mBluetoothAdapter;
+    /**
+     * The bluetooth device last clicked by the user
+     */
     private BluetoothDevice lastClickedDevice;
 
     @Override

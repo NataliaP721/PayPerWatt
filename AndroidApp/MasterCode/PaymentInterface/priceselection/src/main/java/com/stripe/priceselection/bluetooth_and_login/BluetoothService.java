@@ -1,6 +1,9 @@
 package com.stripe.priceselection.bluetooth_and_login;
 /*
   Modified on 2018-02-21.
+  Creates a thread to establish a bluetooth connection with a BluetoothDevice.
+  Once a connection is established the thread is destroyed and a new thread is created to
+  transmit and recieve information to and from the connected device.
   Created by da Ent on 1-11-2015.
   Reference: https://github.com/MEnthoven/Android-HC05-App/blob/master/app/src/main/java/com/menthoven/arduinoandroid/BluetoothService.java
  */

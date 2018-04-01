@@ -10,7 +10,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.stripe.priceselection.R;
-
+/**
+ * This activity asks the user to enter their password into the
+ * editText field. The password entered is sent to the server for validation.
+ * @author Munifa Saeed
+ * @version 1.0
+ * @since March 23, 2018
+ */
 public class EnterPasswordActivity extends AppCompatActivity {
 
     @Override
@@ -19,7 +25,14 @@ public class EnterPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enter_password);
         controlFlags.goingToLogin = false;
     }
-    //called when the user clicks on the SAVE button
+
+    /**
+     * Called when the user clicks on the SAVE button
+     * Sends a password verification request to the server. If the server verifies the
+     * password, the user proceeds to the next activity(connectBluetooth). Otherwise
+     * an error alert dialog is shown.
+     * @param view
+     */
     public void verifyPassword(View view) {
         EditText editText = (EditText) findViewById(R.id.editText1);
         String password = editText.getText().toString();
