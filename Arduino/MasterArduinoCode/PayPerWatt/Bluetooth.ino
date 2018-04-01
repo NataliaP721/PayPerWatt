@@ -65,7 +65,7 @@ boolean recieveDataFromApp(){
  */
 void sendDataToApp(double costPerWatt){
     String to_send = "";
-    if(!send_final_cost && charging){
+    if(!send_final_cost){
         double power_consumed = RMSPower; // Instantaneous Power
         // Split millis into HH:MM:SS or 0 if not charging
         unsigned long time_hours, time_minutes, time_seconds;
@@ -76,9 +76,10 @@ void sendDataToApp(double costPerWatt){
           time_seconds = mils/1000-time_minutes*60; 
         }
         else {
-           time_hours = 0; 
-           time_minutes = 0;
-           time_seconds = 0; 
+           unsigned long mils = previousTime;
+           time_hours = mils/1000/60/60; 
+           time_minutes = mils/1000/60-time_hours*60;
+           time_seconds = mils/1000-time_minutes*60; 
         }
         double rate_of_power_consumed = Wh; //TODO call the power consumed function here - in Wh
 
@@ -88,7 +89,7 @@ void sendDataToApp(double costPerWatt){
     else if(send_final_cost){
         double rate_of_power_consumed = Wh; //TODO call the power consumed function here - in Wh
        
-        if(cost > max_authorized_cost){
+        if(cost>=max_authorized_cost){
             to_send = "*" + String(max_authorized_cost, 2) +"\t";
         }
         else{
@@ -98,7 +99,7 @@ void sendDataToApp(double costPerWatt){
         send_final_cost = false;
     }
     mySerial.print(to_send);
-    delay(500);
+    delay(100);
 }
 
 /**
@@ -122,7 +123,7 @@ String formatData(double cost, double power_consumed, unsigned long time_hours,
     seconds = "0"+seconds;
 
   String temp = "Cost\n " + (String)cost + " $CAD\n";
-  temp += "\nTotal Power Consumed\n " + (String)power_consumed + " W\n";
+  temp += "\nPower Consumed\n " + (String)power_consumed + " W\n";
   temp += "\nTotal Charging Time\n " + hours +":" + minutes +
             ":" + seconds + " (HH:MM:SS)\n";
   temp += "\nRate of Power Consumption\n" + (String)rate_of_power_consumed + " Wh\t";

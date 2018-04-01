@@ -12,7 +12,7 @@ boolean charging = false; // Start with charging is false
 /**
  * Determines the chosen cost per Wh. We chose this value because it increments quickly enough to illustrate it works for the demo without being too high.
  */
-double costPerWattHour = 0.05; // The price of electricity is $0.052/kWh - From ENMAX in calgary the price in February
+double costPerWattHour = 0.5; // The price of electricity is $0.052/kWh - From ENMAX in calgary the price in February
 
 /**
  * The total cost the user will be charged. 
