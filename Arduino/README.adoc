@@ -2,5 +2,3 @@ Test folder contains Arduino code used to test individual components.
 
 Completed Arduino tests:
 LCD, CT + LCD, Relay, Bluetooth, LED
-
-Still Required: Commenting of code
