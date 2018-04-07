@@ -15,12 +15,26 @@ import com.stripe.priceselection.bluetooth_and_login.InheritBluetoothFunctionali
 import com.stripe.priceselection.bluetooth_and_login.MonitorPowerConsumption;
 import com.stripe.priceselection.bluetooth_and_login.controlFlags;
 
+/**
+ * This activity represents the intial activity in the payment process after connecting to Bluetooth, it displays average full charging prices and
+ * contains a button that leads to an activity to enter card information to create a token.
+ * @author Aysha Panatch
+ * @since March 26, 2018
+ * References: https://github.com/stripe/stripe-payments-demo
+ */
 public class LauncherActivity extends InheritBluetoothFunctionality {
 
 
+    /**
+     * Field String PUBLISHABLE_KEY is our personal testing key, set to default for this public code.
+     */
     private static final String PUBLISHABLE_KEY =
-            "add key here";
+            "put your key here";
 
+    /**
+     * The LauncherActivity is initially setup in this method, creating a button with a listener that leads to the enter card information page.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +59,10 @@ public class LauncherActivity extends InheritBluetoothFunctionality {
 
     }
 
+    /**
+     * Bluetooth communication method inherited as a method of an abstract class, not used in the acitvity.
+     * @param msg
+     */
     protected void messageReadAction(Message msg) {
         //do nothing here unless you want to read something from Arduino via bluetooth
         //DO NOT DELETE this method - necessary to define all unimplemented methods of an abstract class
@@ -53,6 +71,9 @@ public class LauncherActivity extends InheritBluetoothFunctionality {
 //        mpc.messageReadAction(msg);
     }
 
+    /**
+     * This deinitialises the bluetooth/application communication when the activity is destroyed for precautionary measures.
+     */
     @Override
     protected void onDestroy(){
         super.onDestroy();
@@ -65,6 +86,9 @@ public class LauncherActivity extends InheritBluetoothFunctionality {
         }
     }
 
+    /**
+     * This method allows the phyical back button on the Android device to navigate to where the back button on the application would lead.
+     */
     @Override
     public void onBackPressed(){
         NavUtils.navigateUpFromSameTask(this);

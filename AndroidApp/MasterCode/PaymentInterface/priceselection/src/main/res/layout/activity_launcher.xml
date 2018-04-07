@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:textSize="20dp"
-            android:text="Average Charging Times" />
+            android:text="Average Full Charge Prices" />
 
         <TextView
             android:id="@+id/editText4"

@@ -74,6 +74,6 @@
         \nTotal Charging Time\n00:00:00 (HH:MM:SS)\n\nRate of Power Consumption\n0.00 Wh</string>
     <string name="startCharging">Start Charging</string>
     <string name="stopCharging">Stop Charging</string>
-    <string name="Averages">\nCellphones:\nIphone: $0.37\nAndroid: $0.60\n\nTablets:\nIpad/Samsung: $1.25\n\nLaptops:\nDell Laptops: $2.70\nMacbook Pro: $2.75\nSurface Pro: $1.90\nAsus Zenbook: $2.90</string>
+    <string name="Averages">\nCellphones:\nIphone: $3.70\nAndroid: $6.00\n\nTablets:\nIpad/Samsung: $12.50\n\nLaptops:\nDell Laptops: $27.00\nMacbook Pro: $27.50\nSurface Pro: $19.00\nAsus Zenbook: $29.00</string>
 
 </resources>

@@ -26,22 +26,33 @@ import com.stripe.priceselection.bluetooth_and_login.MonitorPowerConsumption;
 import com.stripe.priceselection.bluetooth_and_login.controlFlags;
 
 /**
- *
+ * This activity represents the "store" page or the page where the user select's dollar amount to pay. It contains a increment/decrement dollar selecting interface.
+ * It also has a floating action button and a message about payment process (if you do not meet your selected maximum amount, you will be charged for how much power you used).
+ * @author Aysha Panatch
+ * @since March 26, 2018
+ * References: https://github.com/stripe/stripe-payments-demo
  */
 public class StoreActivity
         extends InheritBluetoothFunctionality
         implements StoreAdapter.TotalItemsChangedListener{
 
     /**
-     *
+     * Field String PUBLISHABLE_KEY is our personal testing key, set to default for this public code.
      */
     private static final String PUBLISHABLE_KEY =
-            "sk_test_Pr9JjZAMTijvQnaFc1F5bV5f";
+            "put your key here";
+    /**
+     * mGoToCartButton is the floating action button the user uses to pay or proceed to payment checkout.
+     */
     private FloatingActionButton mGoToCartButton;
+    /**
+     * Used to help display the store item list in the xml file of the activity.
+     */
     private StoreAdapter mStoreAdapter;
 
     /**
-     *
+     * The StoreActivity is initially setup in this method, creating the item divided recyclerview as well as initialises the listener for the checkout (charge) button linked to the server.
+     * There is also an intent to the login activity setup here in a dialog.
      * @param savedInstanceState
      */
     @Override
@@ -109,8 +120,9 @@ public class StoreActivity
     }
 
     /**
-     *
-     * @param totalItems
+     * This methods controls whether the floating action button (charge symbol) displays or not.
+     * The button displays for prices over $0.
+     * @param totalItems is the number of dollars the user selects
      */
     @Override
     public void onTotalItemsChanged(int totalItems) {
@@ -121,12 +133,19 @@ public class StoreActivity
         }
     }
 
+    /**
+     * Bluetooth communication method inherited as a method of an abstract class, not used in the acitvity.
+     * @param msg
+     */
     protected void messageReadAction(Message msg) {
         //do nothing here unless you want to read something from Arduino via bluetooth
         //DO NOT DELETE this method because it necessary to define all unimplemented methods of an abstract class
         Log.i("*************", "INSIDE MESSAGE READ ACTION IN STORE ACTIVITY");
     }
 
+    /**
+     * This method allows the phyical back button on the Android device to navigate to where the back button on the application would lead.
+     */
     @Override
     public void onBackPressed(){
         NavUtils.navigateUpFromSameTask(this);

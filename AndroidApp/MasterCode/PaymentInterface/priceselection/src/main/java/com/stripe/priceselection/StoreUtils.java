@@ -6,14 +6,28 @@ import java.text.DecimalFormat;
 import java.util.Currency;
 
 /**
- * Class for utility functions.
+ * This class is used to store utility functions used in other activities. These methods are used to help calculate/create certain values.
+ * @author Aysha Panatch
+ * @since March 24, 2018
+ * References: https://github.com/stripe/stripe-payments-demo
  */
 public class StoreUtils {
 
+    /**
+     * Returns the String of the emoji based on it's unicode int value.
+     * @param unicode
+     * @return
+     */
     static String getEmojiByUnicode(int unicode){
         return new String(Character.toChars(unicode));
     }
 
+    /**
+     * Turns the calculated price from a long into a well-formatted String.
+     * @param price as a long
+     * @param currency
+     * @return the price as a formatted String
+     */
     static String getPriceString(long price, @Nullable Currency currency) {
         Currency displayCurrency = currency == null
                 ? Currency.getInstance("CAD")

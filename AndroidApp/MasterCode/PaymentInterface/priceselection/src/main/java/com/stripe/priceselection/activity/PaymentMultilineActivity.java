@@ -39,17 +39,44 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
+/**
+ * This class represents the page the user enters their card information into.
+ * @author Aysha Panatch
+ * @since March 24, 2018
+ * References: https://github.com/stripe/stripe-payments-demo
+ */
 public class PaymentMultilineActivity extends InheritBluetoothFunctionality {
 
+    /**
+     * A controller used to start or finish progress based on the compositesubscription.
+     */
     ProgressDialogController mProgressDialogController;
+    /**
+     * An object to show errors.
+     */
     ErrorDialogHandler mErrorDialogHandler;
-
+    /**
+     * The widget used to recieve the card information from the user.
+     */
     CardMultilineWidget mCardMultilineWidget;
+    /**
+     * A collection of subscriptions (used to sell content in a recurring manner on android applications).
+     */
     CompositeSubscription mCompositeSubscription;
-
+    /**
+     * Used to help display the list in the xml file of the activity.
+     */
     private SimpleAdapter mSimpleAdapter;
+    /**
+     * The list of the card sources to display.
+     */
     private List<Map<String, String>> mCardSources= new ArrayList<>();
 
+    /**
+     * The PaymentMultilineActivity is initially setup in this method, creating a multiline widget to enter card information.
+     * It also initialises a list of tokens at the bottom of the page.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +108,10 @@ public class PaymentMultilineActivity extends InheritBluetoothFunctionality {
                 }));
     }
 
+    /**
+     * The card entered in the multiline widget is saved in this method into a field of Card called card. We create a Stripe token using the card source parameters.
+     * Then we add this token to the composite subscription for this particular transaction.
+     */
     private void saveCard() {
         Card card = mCardMultilineWidget.getCard();
         if (card == null) {
@@ -133,6 +164,11 @@ public class PaymentMultilineActivity extends InheritBluetoothFunctionality {
                         }));
     }
 
+    /**
+     * This method adds the token to the list of tokens at the bottom of the page so the user can view their token. In our case only one token is entered in each transaction and
+     * the token list is cleared between users for safety reasons. However, the one token is shown to the user to show the token process for the purposes of ENEL 400.
+     * @param source
+     */
     private void addToList(@Nullable Source source) {
         if (source == null || !Source.CARD.equals(source.getType())) {
             return;
@@ -164,6 +200,10 @@ public class PaymentMultilineActivity extends InheritBluetoothFunctionality {
 
     }
 
+    /**
+     * Bluetooth communication method inherited as a method of an abstract class, not used in the acitvity.
+     * @param msg
+     */
     protected void messageReadAction(Message msg) {
         //do nothing here unless you want to read something from Arduino via bluetooth
         //DO NOT DELETE this method - necessary to define all unimplemented methods of an abstract class
@@ -171,6 +211,9 @@ public class PaymentMultilineActivity extends InheritBluetoothFunctionality {
 
     }
 
+    /**
+     * This method allows the phyical back button on the Android device to navigate to where the back button on the application would lead.
+     */
     @Override
     public void onBackPressed(){
         NavUtils.navigateUpFromSameTask(this);
